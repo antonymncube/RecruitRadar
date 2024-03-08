@@ -12,6 +12,8 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers(); // Add controller services
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +23,13 @@ if (app.Environment.IsDevelopment())
   app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Ensure HTTPS redirection is enabled in production
+if (!app.Environment.IsDevelopment())
+{
+  app.UseHttpsRedirection();
+}
 
+// Add endpoint routing
+app.MapControllers();
 
+app.Run();
