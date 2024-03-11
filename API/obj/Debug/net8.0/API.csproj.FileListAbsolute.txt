@@ -127,3 +127,4 @@ C:\Users\antony.mncube\Documents\projects\DatingApp\API\obj\Debug\net8.0\refint\
 C:\Users\antony.mncube\Documents\projects\DatingApp\API\obj\Debug\net8.0\API.pdb
 C:\Users\antony.mncube\Documents\projects\DatingApp\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\antony.mncube\Documents\projects\DatingApp\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\antony.mncube\Documents\projects\DatingApp\api\bin\Debug\net8.0\global.json

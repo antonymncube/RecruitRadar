@@ -1,5 +1,11 @@
-using API;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using API; // Assuming API is the namespace for your application
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +15,25 @@ builder.Services.AddDbContext<DataContext>(opt =>
   opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
-builder.Services.AddControllers(); // Add controller services
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("AllowSpecificOrigin",
+      builder =>
+      {
+        builder.WithOrigins("http://localhost:4200")
+                 .AllowAnyHeader()
+                 .AllowAnyMethod();
+      });
+});
+
+// Add Swagger services
+builder.Services.AddSwaggerGen(c =>
+{
+  c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -20,16 +41,24 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
-  app.UseSwaggerUI();
+  app.UseSwaggerUI(c =>
+  {
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
+  });
 }
 
-// Ensure HTTPS redirection is enabled in production
-if (!app.Environment.IsDevelopment())
-{
-  app.UseHttpsRedirection();
-}
+app.UseHttpsRedirection();
+app.UseRouting();
+
+// Use CORS middleware
+app.UseCors("AllowSpecificOrigin");
+
+app.UseAuthorization();
 
 // Add endpoint routing
 app.MapControllers();
+
+// Add console log to indicate that the application has started
+Console.WriteLine("Application started.");
 
 app.Run();
