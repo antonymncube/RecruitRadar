@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 
-namespace API;
-
-public class RegisterDtos
+namespace API
 {
-  public string username { get; private set; }
-  public string Passoword { get; private set; }
-
+  public class RegisterDtos
+  {
+    public string UserName { get; set; }
+    public string Password { get; set; }
+  }
 }
