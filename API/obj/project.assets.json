@@ -2981,11 +2981,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\antony.mncube\\Documents\\projects\\DatingApp\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\antony.mncube\\Documents\\projects\\RecruitRadar\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\antony.mncube\\Documents\\projects\\DatingApp\\API\\API.csproj",
+      "projectPath": "C:\\Users\\antony.mncube\\Documents\\projects\\RecruitRadar\\API\\API.csproj",
       "packagesPath": "C:\\Users\\antony.mncube\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\antony.mncube\\Documents\\projects\\DatingApp\\API\\obj\\",
+      "outputPath": "C:\\Users\\antony.mncube\\Documents\\projects\\RecruitRadar\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
